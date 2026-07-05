@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Professor</title>
+
+    <script src="./js/professor.js" defer></script>
+    <link rel="stylesheet" href="./css/professor.css">
+
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- CONTEUDO -->
+
+
+        <main class="content">
+
+
+            <div class="header">
+
+
+                <h1>
+                    Painel de Criação de Aulas
+                </h1>
+
+
+                <p>
+                    Crie cursos, aulas, conteúdos e atividades para seus alunos.
+                </p>
+
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <!-- CURSO -->
+
+
+                <section class="card">
+
+
+                    <h2>
+                        📚 Criar Curso
+                    </h2>
+
+
+                    <input id="curso_nome" placeholder="Nome do curso">
+
+
+                    <input id="curso_desc" placeholder="Descrição do curso">
+
+
+                    <input id="curso_area" placeholder="Área do curso">
+
+
+                    <button onclick="criarCurso()">
+
+                        Criar Curso
+
+                    </button>
+
+
+
+                    <br><br>
+
+
+                    <label>
+                        Curso atual:
+                    </label>
+
+
+                    <select id="curso_select">
+
+                    </select>
+
+
+                </section>
+
+                <!-- AULA -->
+
+
+                <section class="card">
+
+
+                    <h2>
+                        🎓 Criar Aula
+                    </h2>
+
+
+                    <input id="aula_titulo" placeholder="Título da aula">
+
+
+                    <button onclick="criarAula()">
+
+
+                        Criar Aula
+
+
+                    </button>
+
+
+                    <br><br>
+
+
+                    <label>
+                        Aula selecionada:
+                    </label>
+
+
+                    <select id="aula_select">
+
+
+                    </select>
+
+
+                </section>
+
+
+
+
+
+
+
+                <!-- TEORIA -->
+
+
+                <section class="card">
+
+
+                    <h2>
+                        📖 Conteúdo da Aula
+                    </h2>
+
+
+
+                    <input id="video" placeholder="Link do vídeo">
+
+
+                    <textarea id="texto" placeholder="Digite a teoria da aula"></textarea>
+
+
+
+
+                    <h3>
+                        Imagens
+                    </h3>
+
+
+                    <div id="imgs">
+
+
+                    </div>
+
+
+
+                    <button onclick="addImagem()">
+
+                        +
+                        Adicionar imagem
+
+                    </button>
+
+
+
+                    <button onclick="criarTeoria()">
+
+
+                        Salvar conteúdo
+
+
+                    </button>
+
+
+
+                </section>
+
+
+
+
+
+
+
+
+                <!-- ATIVIDADE -->
+
+
+                <section class="card">
+
+
+                    <h2>
+
+                        ❓ Atividade automática
+
+                    </h2>
+
+
+
+                    <input id="pergunta" placeholder="Pergunta">
+
+
+
+                    <input id="o1" placeholder="Alternativa 1">
+
+
+                    <input id="o2" placeholder="Alternativa 2">
+
+
+                    <input id="o3" placeholder="Alternativa 3">
+
+
+                    <input id="o4" placeholder="Alternativa 4">
+
+
+
+                    <input id="correta" placeholder="Resposta correta (1-4)">
+
+
+
+
+                    <button onclick="criarAtividade()">
+
+
+                        Salvar atividade
+
+
+                    </button>
+
+
+
+
+                </section>
+
+
+
+
+
+            </div>
+
+
+
+        </main>
+
+
+    </div>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #0f172a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+    width:350px;
+    color:white;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.tabs{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.tab{
+    flex:1;
+    padding:10px;
+    cursor:pointer;
+    background:#334155;
+    border:none;
+    color:white;
+}
+
+.tab.active{
+    background:#22c55e;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:none;
+    box-sizing: border-box;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#22c55e;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#16a34a;
+}
+
+.hidden{
+    display:none;
+}
+
+hr{
+    margin:15px 0;
+    border:1px solid #334155;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Login</h2>
+
+<div class="tabs">
+    <button class="tab active" onclick="showTab('aluno')">Aluno</button>
+    <button class="tab" onclick="showTab('prof')">Professor</button>
+</div>
+
+<!-- ================= ALUNO ================= -->
+<div id="aluno">
+    <hr>
+    <h3 style="text-align:center;">Aluno entre com Google</h3>
+
+    <div id="g_id_onload"
+         data-client_id="621307736376-q3n7e0kihteht5n0ehl0rho59t33d3f2.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+
+    <div class="g_id_signin" data-type="standard"></div>
+</div>
+
+<!-- ================= PROFESSOR ================= -->
+<div id="prof" class="hidden">
+    <!-- Ajustado os tipos para suporte nativo a senhas e e-mails -->
+    <input type="email" id="emailProf" placeholder="Email">
+    <input type="password" id="senhaProf" placeholder="Senha" onkeydown="if(event.key === 'Enter') loginProfessor()">
+
+    <button onclick="loginProfessor()">Entrar como Professor</button>
+</div>
+
+</div>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="./js/auth.js"></script>
+
+<script>
+/* ================= TAB ================= */
+function showTab(tab){
+    document.getElementById("aluno").classList.add("hidden");
+    document.getElementById("prof").classList.add("hidden");
+
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+    if(tab === "aluno"){
+        document.getElementById("aluno").classList.remove("hidden");
+        document.querySelectorAll(".tab")[0].classList.add("active");
+    } else {
+        document.getElementById("prof").classList.remove("hidden");
+        document.querySelectorAll(".tab")[1].classList.add("active");
+    }
+}
+
+/* ================= LOGIN PROFESSOR (NORMAL) ================= */
+function loginProfessor(){
+    const email = document.getElementById("emailProf").value;
+    const senha = document.getElementById("senhaProf").value;
+
+    if (!email || !senha) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    fetch("http://127.0.0.1:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if(data.status === "ok"){
+            if(data.user && (data.user.tipo === "professor" || data.user.tipo === "admin")){
+                
+                // 1. Limpa o que tinha antes para garantir dados novos
+                localStorage.clear(); 
+
+                // 2. Grava exatamente os dados exigidos pelo layout.js
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user_id", data.user.id);
+                localStorage.setItem("user_nome", data.user.nome);
+                localStorage.setItem("user_tipo", data.user.tipo); 
+
+                console.log("Sessão salva com sucesso. Redirecionando de forma limpa...");
+                
+                // 3. Substitui a rota impedindo que o botão voltar ou loops síncronos limpem o storage
+                window.location.replace("layout.html?pagina=dashboard_professo");
+                
+            } else {
+                alert("Acesso negado: Este painel é exclusivo para professores e administradores.");
+            }
+        } else {
+            alert(data.mensagem || "E-mail ou senha incorretos.");
+        }
+    })
+    .catch(err => {
+        console.error("Erro na requisição de login:", err);
+        alert("Não foi possível conectar ao servidor da API.");
+    });
+}
+</script>
+
+</body>
+</html>

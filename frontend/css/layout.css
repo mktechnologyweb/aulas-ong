@@ -1,0 +1,83 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:Arial;
+    background:#f1f5f9;
+
+}
+
+
+
+.layout{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+
+
+.sidebar{
+
+    width:230px;
+    background:#0f172a;
+    color:white;
+    padding:20px;
+
+}
+
+
+
+.sidebar h2{
+
+    margin-bottom:30px;
+
+}
+
+
+
+.sidebar a{
+
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:8px;
+
+}
+
+
+
+.sidebar a:hover{
+
+    background:#1e293b;
+
+}
+
+
+
+
+.content{
+
+    flex:1;
+    padding:30px;
+
+}
+
+
+
+.header{
+
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+
+}

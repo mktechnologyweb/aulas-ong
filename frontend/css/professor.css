@@ -1,0 +1,255 @@
+
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+
+
+
+
+/* =========================
+LAYOUT
+========================= */
+
+
+
+
+/* =========================
+SIDEBAR
+========================= */
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+CONTEUDO
+========================= */
+
+
+.content{
+
+    flex:1;
+
+    padding:30px;
+
+}
+
+
+
+.header{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,.08);
+
+}
+
+
+
+.header h1{
+
+    margin:0;
+
+}
+
+
+
+/* =========================
+CARDS
+========================= */
+
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(350px,1fr));
+
+    gap:20px;
+
+}
+
+
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.08);
+
+}
+
+
+
+.card h2{
+
+    margin-top:0;
+
+    color:#2563eb;
+
+}
+
+
+
+
+
+/* =========================
+FORM
+========================= */
+
+
+input,
+textarea,
+select{
+
+
+    width:100%;
+
+    padding:12px;
+
+
+    margin-top:10px;
+
+
+    border:
+
+    1px solid #cbd5e1;
+
+
+    border-radius:10px;
+
+
+    font-size:15px;
+
+
+}
+
+
+
+textarea{
+
+    height:150px;
+
+    resize:none;
+
+}
+
+
+
+
+button{
+
+
+    margin-top:12px;
+
+
+    padding:12px 18px;
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    background:#2563eb;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+button:hover{
+
+
+    background:#1d4ed8;
+
+
+}
+
+
+
+/* =========================
+TITULOS
+========================= */
+
+
+.etapa{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+
+/* =========================
+RESPONSIVO
+========================= */
+
+
+@media(max-width:800px){
+
+
+.sidebar{
+
+    display:none;
+
+}
+
+
+.content{
+
+    padding:15px;
+
+}
+
+
+.grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+}
+
+
+

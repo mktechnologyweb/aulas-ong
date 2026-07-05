@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Certificados</title>
+
+    <script src="./js/api.js" defer></script>
+    <script src="./js/certificado_professor.js" defer></script>
+    <link rel="stylesheet" href="./css/certificados_professor.css">
+    
+</head>
+
+<body>
+
+<div class="layout">
+
+
+    <!-- CONTEÚDO -->
+    <div class="content">
+
+        <div class="header">
+            <h2>🏆 Certificados dos alunos</h2>
+        </div>
+
+        <div class="search">
+            <input id="buscarAluno" placeholder="Pesquisar aluno">
+            <button onclick="pesquisarCertificados()">Buscar</button>
+        </div>
+
+        <div id="listaCertificados"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

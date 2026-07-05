@@ -1,0 +1,33 @@
+.teoria-container{
+    max-width:900px;
+    margin:auto;
+    font-family:Arial;
+}
+
+.video-box{
+    margin-bottom:20px;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.texto-box{
+    background:#f1f5f9;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.imagens-box{
+    margin-top:20px;
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:10px;
+}
+
+.galeria img{
+    width:100%;
+    border-radius:10px;
+}

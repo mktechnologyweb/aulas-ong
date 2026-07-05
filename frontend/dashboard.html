@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Aluno</title>
+
+<script src="./js/dashboard.js" defer></script>
+<link rel="stylesheet" href="./css/dashboard.css">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="header">
+            <h1>Dashboard do Aluno</h1>
+        </div>
+
+        <!-- CARDS -->
+        <div class="cards">
+
+            <div class="card">
+                <h2>XP</h2>
+                <div class="value" id="xp">0</div>
+            </div>
+
+            <div class="card">
+                <h2>Nível</h2>
+                <div class="value" id="nivel">0</div>
+            </div>
+
+            <div class="card">
+                <h2>Aulas</h2>
+                <div class="value" id="aulas">0</div>
+            </div>
+
+            <div class="card">
+                <h2>Meta semanal</h2>
+                <div class="value" id="meta">0/5</div>
+            </div>
+
+        </div>
+
+        <!-- SECTIONS -->
+        <div class="grid">
+
+            <!-- CONQUISTAS -->
+            <div class="box">
+                <h3>🏆 Conquistas</h3>
+                <div id="conquistas"></div>
+            </div>
+
+            <!-- PROGRESSO -->
+            <div class="box">
+                <h3>📈 Progresso semanal</h3>
+
+                <div class="progress">
+                    <div class="bar" id="barraMeta"></div>
+                </div>
+
+                <p id="metaTexto" style="margin-top:10px;"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

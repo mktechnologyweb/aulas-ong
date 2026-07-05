@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Alunos</title>
+
+<script src="./js/api.js" defer></script>
+<script src="./js/alunos_professor.js" defer></script>
+<link rel="stylesheet" href="./css/alunos.css">
+
+
+</head>
+
+<body>
+
+<div class="layout">
+
+ 
+
+    <!-- MAIN -->
+    <div class="main">
+
+      
+<div class="header">
+    <h1>👥 Análise de Alunos</h1>
+
+    <select id="curso_select" onchange="filtrarPorCurso()">
+        <option value="">Todos os cursos</option>
+    </select>
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>🏆 Top aluno</h2>
+        <div id="top_aluno">--</div>
+    </div>
+
+    <div class="card">
+        <h2>👥 Total alunos</h2>
+        <div id="total_alunos">0</div>
+    </div>
+
+    <div class="card">
+        <h2>📊 Média geral</h2>
+        <div id="media_geral">0%</div>
+    </div>
+
+</div>
+
+<div class="grid">
+
+    <div class="box">
+        <h3>🏆 Ranking</h3>
+        <div id="ranking"></div>
+    </div>
+
+    <div class="box">
+        <h3>📈 Evolução</h3>
+        <canvas id="grafico"></canvas>
+    </div>
+
+</div>
+    </div>
+
+</div>
+
+</body>
+</html>

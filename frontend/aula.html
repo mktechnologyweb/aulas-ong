@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Aulas</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/aula.js" defer></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+
+
+    <!-- CONTEÚDO -->
+    <main class="container">
+
+        <!-- LISTA DE AULAS -->
+        <section id="lista-aulas" class="card">
+            <h2>📖 Aulas disponíveis</h2>
+            <div class="grid" id="grid-aulas"></div>
+        </section>
+
+        <!-- AULA ABERTA -->
+        <section id="aula-container" class="card" style="display:none;">
+
+            <h2 id="titulo-aula"></h2>
+
+            <div id="conteudo-aula"></div>
+
+            <div id="controles-aula"></div>
+
+            <button onclick="voltarLista()">
+                ⬅ Voltar
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="fechar" onclick="fecharModal()">✖</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+</body>
+
+</html>

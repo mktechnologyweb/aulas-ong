@@ -1,0 +1,132 @@
+
+/* CARD */
+
+
+.card{
+
+
+    background:white;
+
+
+    padding:25px;
+
+
+    border-radius:18px;
+
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.card h2{
+
+
+    color:#2563eb;
+
+
+    margin-top:0;
+
+
+}
+
+
+
+/* LISTA CURSOS */
+
+
+#listaCursos{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+}
+
+
+
+.curso{
+
+
+    background:#f8fafc;
+
+
+    border-radius:14px;
+
+
+    padding:15px;
+
+
+}
+
+
+
+/* BOTÕES */
+
+
+button{
+
+
+    padding:10px 16px;
+
+
+    border:none;
+
+
+    border-radius:8px;
+
+
+    background:#2563eb;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+button:hover{
+
+
+    background:#1d4ed8;
+
+
+}
+
+
+
+
+@media(max-width:800px){
+
+
+.sidebar{
+
+    display:none;
+
+}
+
+
+.content{
+
+    padding:15px;
+
+}
+
+
+}
+
+
+

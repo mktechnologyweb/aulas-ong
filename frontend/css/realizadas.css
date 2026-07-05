@@ -1,0 +1,201 @@
+
+
+
+
+/* CONTEUDO */
+
+
+.content{
+
+
+    flex:1;
+
+    padding:30px;
+
+
+}
+
+
+
+.header{
+
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.header h1{
+
+
+    margin:0;
+
+    color:#2563eb;
+
+
+}
+
+.curso-box {
+    margin-bottom: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.curso-header {
+    background: #1e40af;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.curso-content {
+    padding: 10px;
+    display: none; /* começa fechado */
+}
+
+.atividade {
+    margin: 10px 0;
+}
+
+
+
+.card{
+
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.card h2{
+
+
+    color:#2563eb;
+
+
+}
+
+
+
+
+#listaAtividades{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+
+}
+
+
+
+
+.atividade{
+
+
+    background:#f8fafc;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    border:1px solid #e2e8f0;
+
+
+}
+
+
+
+.pergunta{
+
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+
+
+.opcoes{
+
+
+    margin-top:10px;
+
+}
+
+/* LISTA DE ALUNOS */
+.aluno_select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.opcoes div{
+
+
+    padding:8px;
+
+
+    background:white;
+
+    border-radius:8px;
+
+    margin-bottom:5px;
+
+
+}
+
+
+
+@media(max-width:800px){
+
+
+.sidebar{
+
+display:none;
+
+}
+
+
+.content{
+
+padding:15px;
+
+}
+
+
+}
+
+

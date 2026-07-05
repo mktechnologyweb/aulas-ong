@@ -1,0 +1,115 @@
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    width: 220px;
+    background: #111827;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+    background: #1f2937;
+}
+
+/* =========================
+   MAIN
+========================= */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* HEADER */
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 22px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.value {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+
+
+
+
+.curso-box {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.curso-header {
+    background: #1e40af;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.curso-content {
+    background: #f8fafc;
+    padding: 10px;
+}
+
+.atividade {
+    margin-bottom: 10px;
+}
