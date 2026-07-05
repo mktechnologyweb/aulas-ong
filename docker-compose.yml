@@ -6,7 +6,7 @@ services:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # <-- ADICIONE ESTA LINHA
 
     environment:
-      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: educafuturo
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
@@ -27,7 +27,7 @@ services:
     environment:
       DB_HOST: db
       DB_USER: root
-      DB_PASSWORD: ""
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       DB_NAME: educafuturo
 
     depends_on:
