@@ -1,23 +1,3 @@
-function logout() {
-
-    if (!confirm("Deseja realmente sair do sistema?")) {
-        return;
-    }
-
-    localStorage.clear();
-    sessionStorage.clear();
-
-    window.location.replace("login.html");
-}
-function logout() {
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
-
-    sessionStorage.clear();
-
-    window.location.replace("login.html");
-}
 
 
 

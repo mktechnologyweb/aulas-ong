@@ -22,14 +22,22 @@ try {
 }
 
 // MOTIVO 3: O token é válido, mas o usuário não tem a permissão necessária
-if (
-    payload && 
-    payload.tipo !== "professor" &&
-    payload.tipo !== "admin"
-) {
-    console.warn("[Alerta Autenticação] Acesso negado. Tipo de usuário inválido:", payload.tipo);
-    alert("Acesso negado. Seu tipo de usuário é: " + payload.tipo);
+const tiposValidos = ["professor", "admin", "aluno"];
+
+if (payload && !tiposValidos.includes(payload.tipo)) {
+    console.warn("[Alerta Autenticação] Acesso negado. Tipo de usuário completamente inválido:", payload.tipo);
+    localStorage.clear();
     window.location.href = "login.html";
 }
 
+// Bloqueio extra: Se for um Aluno tentando forçar a entrada na Dashboard do Professor pela URL
+const urlParams = new URLSearchParams(window.location.search);
+const paginaAtual = urlParams.get("pagina");
+
+if (payload && payload.tipo === "aluno" && paginaAtual && (paginaAtual.includes("professo") || paginaAtual === "professor")) {
+    console.warn("[Alerta Segurança] Aluno redirecionado para a área correta.");
+    window.location.href = "layout.html?pagina=dashboard_aluno";
+}
+
 console.log("[Sucesso Autenticação] Token validado com sucesso para o usuário:", payload);
+

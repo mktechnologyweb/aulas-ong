@@ -80,7 +80,66 @@ hr{
     margin:15px 0;
     border:1px solid #334155;
 }
+
+/* Centraliza o botão do Google */
+#googleBtnDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
 </style>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<script>
+// 1. Função que recebe o token após o clique
+function handleCredentialResponse(response) {
+    console.log("Token JWT obtido:", response.credential);
+
+    fetch("http://127.0.0.1:5000/api/login-google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: response.credential })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if(data.status === "ok"){
+            localStorage.clear(); 
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user_id", data.user.id);
+            localStorage.setItem("user_nome", data.user.nome);
+            localStorage.setItem("user_tipo", data.user.tipo); 
+
+            console.log("Login Aluno efetuado.");
+            window.location.replace("layout_aluno.html?pagina_aluno=dashboard");
+        } else {
+            alert(data.mensagem || "Erro ao fazer login com o Google.");
+        }
+    })
+    .catch(err => {
+        console.error("Erro na autenticação com o backend:", err);
+        alert("Não foi possível conectar ao servidor para validar o Google Sign-In.");
+    });
+}
+
+// 2. Inicialização forçada via JS para ignorar bugs de cookies/FedCM do Chrome
+window.onload = function () {
+    if (typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+            client_id: "621307736376-q3n7e0kihteht5n0ehl0rho59t33d3f2.apps.googleusercontent.com",
+            callback: handleCredentialResponse,
+            use_fedcm: false // Desativa o FedCM bugado no seu navegador
+        });
+        
+        google.accounts.id.renderButton(
+            document.getElementById("googleBtnDiv"),
+            { theme: "outline", size: "large", width: "300" }
+        );
+    } else {
+        setTimeout(window.onload, 100);
+    }
+}
+</script>
 
 </head>
 
@@ -95,22 +154,14 @@ hr{
     <button class="tab" onclick="showTab('prof')">Professor</button>
 </div>
 
-<!-- ================= ALUNO ================= -->
 <div id="aluno">
     <hr>
     <h3 style="text-align:center;">Aluno entre com Google</h3>
-
-    <div id="g_id_onload"
-         data-client_id="621307736376-q3n7e0kihteht5n0ehl0rho59t33d3f2.apps.googleusercontent.com"
-         data-callback="handleCredentialResponse">
-    </div>
-
-    <div class="g_id_signin" data-type="standard"></div>
+    
+    <div id="googleBtnDiv"></div>
 </div>
 
-<!-- ================= PROFESSOR ================= -->
 <div id="prof" class="hidden">
-    <!-- Ajustado os tipos para suporte nativo a senhas e e-mails -->
     <input type="email" id="emailProf" placeholder="Email">
     <input type="password" id="senhaProf" placeholder="Senha" onkeydown="if(event.key === 'Enter') loginProfessor()">
 
@@ -118,9 +169,6 @@ hr{
 </div>
 
 </div>
-
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<script src="./js/auth.js"></script>
 
 <script>
 /* ================= TAB ================= */
@@ -159,18 +207,14 @@ function loginProfessor(){
         if(data.status === "ok"){
             if(data.user && (data.user.tipo === "professor" || data.user.tipo === "admin")){
                 
-                // 1. Limpa o que tinha antes para garantir dados novos
                 localStorage.clear(); 
 
-                // 2. Grava exatamente os dados exigidos pelo layout.js
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("user_id", data.user.id);
                 localStorage.setItem("user_nome", data.user.nome);
                 localStorage.setItem("user_tipo", data.user.tipo); 
 
                 console.log("Sessão salva com sucesso. Redirecionando de forma limpa...");
-                
-                // 3. Substitui a rota impedindo que o botão voltar ou loops síncronos limpem o storage
                 window.location.replace("layout.html?pagina=dashboard_professo");
                 
             } else {
