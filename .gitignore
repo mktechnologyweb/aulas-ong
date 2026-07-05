@@ -1,29 +1,24 @@
-# --- Python ---
+# Python
 __pycache__/
-*.py[cod]
-*.pyo
-.venv/
+*.pyc
 venv/
-env/
 .env
 
-# --- Banco de Dados e Dumps ---
-# Se você quer subir o dump principal, não ignore tudo. 
-# Mas ignore dumps temporários ou arquivos de log do MySQL
-*.log
-*.bak
-*.tmp
-# Se quiser ignorar todos os .sql, descomente a linha abaixo:
-*.sql
-*.yml
+# Flask
+instance/
 
-# --- IDEs e Editores ---
+# MySQL
+mysql_data/
+
+# Certificados gerados
+backend/certificados/
+
+# VS Code
 .vscode/
-.idea/
+
+# Logs
+*.log
+
+# Sistema
 .DS_Store
-
-# --- Pastas de Build e Dependências ---
-node_modules/
-dist/
-build/
-
+Thumbs.db
