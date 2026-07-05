@@ -14,10 +14,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Passo 1: Build do Backend (usando a pasta 'app')
+    # Passo 1: O contexto do build agora é a pasta 'app'
     - name: Build Backend Image
-      run: docker build . --file app/Dockerfile --tag educafuturo-backend:latest
+      run: docker build app --file app/Dockerfile --tag educafuturo-backend:latest
 
-    # Passo 2: Build do Frontend (usando a pasta 'frontend')
+    # Passo 2: O contexto do build agora é a pasta 'frontend'
     - name: Build Frontend Image
-      run: docker build . --file frontend/Dockerfile --tag educafuturo-frontend:latest
+      run: docker build frontend --file frontend/Dockerfile --tag educafuturo-frontend:latest
