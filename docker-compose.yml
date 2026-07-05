@@ -48,3 +48,15 @@ services:
 
 volumes:
   mysql_data:
+
+steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Passo 1: Build do Backend (usando a pasta 'app')
+    - name: Build Backend Image
+      run: docker build . --file app/Dockerfile --tag educafuturo-backend:latest
+
+    # Passo 2: Build do Frontend (usando a pasta 'frontend')
+    - name: Build Frontend Image
+      run: docker build . --file frontend/Dockerfile --tag educafuturo-frontend:latest
