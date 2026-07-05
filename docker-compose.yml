@@ -1,0 +1,50 @@
+services:
+
+  db:
+    image: mysql:8
+    restart: always
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # <-- ADICIONE ESTA LINHA
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: educafuturo
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+
+  backend:
+    build: ./app
+    restart: always
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: educafuturo
+
+    depends_on:
+      - db
+
+    volumes:
+      - ./backend/certificados:/app/certificados
+
+  frontend:
+    build: ./frontend
+    restart: always
+
+    ports:
+      - "80:80"
+
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
